@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <title>Dynamic Background</title>
+    </head>
+    <body>
+        <noscript>Sorry, your browser does not support JavaScript!</noscript>
+        <script>
+            const DEFAULT_URL = "11-0";
+            const DEFAULT_DAY_HOUR = 6;
+            const DEFAULT_DAY_MINUTE = 0;
+            const DEFAULT_NIGHT_HOUR = 18;
+            const DEFAULT_NIGHT_MINUTE = 0;
+            const DEFAULT_DAY_TIME = "Day";
+            const DEFAULT_NIGHT_TIME = "Night";
+            const DEFAULT_POSITION_Y = "50%";
+            const DAY_SHIFT_ONLY_VERSION = ["10-12","10-13"];
+            var myConfig = {
+                version: DEFAULT_URL,
+                dayHour: DEFAULT_DAY_HOUR,
+                dayMinute: DEFAULT_DAY_MINUTE,
+                nightHour: DEFAULT_NIGHT_HOUR,
+                nightMinute: DEFAULT_NIGHT_MINUTE,
+                positionY: DEFAULT_POSITION_Y,
+            };
+
+            document.addEventListener("DOMContentLoaded", function(event) { 
+                changeBackground(myConfig);
+                setInterval(() => {
+                    changeBackground(myConfig);
+                }, 2000);
+            });
+
+            function getHour() {
+                const d = new Date();
+                return d.getHours();
+            }
+            
+            function getMinute() {
+                const d = new Date();
+                return d.getMinutes();
+            }
+
+            function isHour(number) {
+                if (typeof(number) == "number" && 0 <= number && number <= 24) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            function isMinute(number) {
+                if (typeof(number) == "number" && 0 <= number && number <= 59) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            function changeBackground({version, dayHour, dayMinute, nightHour, nightMinute, positionY}) {
+                
+                let dayTime = DEFAULT_DAY_TIME;
+                const settingDayHour = isHour(dayHour) ? dayHour : DEFAULT_DAY_HOUR;
+                const settingDayMinute = isMinute(dayMinute) ? dayMinute : DEFAULT_DAY_MINUTE;
+                const settingNightHour = isHour(nightHour) ? nightHour : DEFAULT_NIGHT_HOUR;
+                const settingNightMinute = isMinute(nightMinute) ? nightMinute : DEFAULT_NIGHT_MINUTE;
+                const h = getHour();
+                const m = getMinute();
+                if (version == "") {
+                    version = DEFAULT_URL;
+                }
+                if (settingDayHour < h && h < settingNightHour) {
+                    dayTime = DEFAULT_DAY_TIME;
+                } else if (h == settingDayHour && settingDayMinute <= m) {
+                    dayTime = DEFAULT_DAY_TIME;
+                } else if (h == settingNightHour && m < settingNightMinute) {
+                    dayTime = DEFAULT_DAY_TIME;
+                } else {
+                    dayTime = DEFAULT_NIGHT_TIME;
+                }
+                if (DAY_SHIFT_ONLY_VERSION.indexOf(version) >= 0) {
+                    document.body.style.background = `url('img/${version}/${version}.jpg')`;
+                } else {
+                    document.body.style.background = `url('img/${version}/${version}-${dayTime}.jpg')`;
+                }
+                document.body.style.transition = "background 2s ease";
+                document.body.style.backgroundPosition = "center";
+                document.body.style.backgroundRepeat = "no-repeat";
+                document.body.style.backgroundSize = "cover";
+                document.body.style.backgroundPositionY = positionY;
+            }
+
+            window.wallpaperPropertyListener = {
+                applyUserProperties: function(properties) {
+                    if (properties.version) {
+                        myConfig.version = properties.version.value;
+                    }
+                    if (properties.dayhour) {
+                        myConfig.dayHour = properties.dayhour.value;
+                    }
+                    if (properties.dayminute) {
+                        myConfig.dayMinute = properties.dayminute.value;
+                    }
+                    if (properties.nighthour) {
+                        myConfig.nightHour = properties.nighthour.value;
+                    }
+                    if (properties.nightminute) {
+                        myConfig.nightMinute = properties.nightminute.value;
+                    }
+                    if (properties.positiony) {
+                        myConfig.positionY = properties.positiony.value + "%";
+                    }
+                },
+            };
+        </script>
+    </body>
+</html>

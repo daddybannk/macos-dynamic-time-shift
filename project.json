@@ -1,0 +1,126 @@
+{
+	"contentrating" : "Everyone",
+	"description" : "Dynamic changing with time critiria",
+	"file" : "index.html",
+	"general" : 
+	{
+		"properties" : 
+		{
+			"dayhour" : 
+			{
+				"fraction" : true,
+				"index" : 1,
+				"max" : 24,
+				"min" : 0,
+				"order" : 101,
+				"precision" : 1,
+				"step" : 1,
+				"text" : "Day Hour",
+				"type" : "slider",
+				"value" : 6
+			},
+			"dayminute" : 
+			{
+				"fraction" : true,
+				"index" : 2,
+				"max" : 59,
+				"min" : 0,
+				"order" : 102,
+				"precision" : 1,
+				"step" : 1,
+				"text" : "Day Minute",
+				"type" : "slider",
+				"value" : 0
+			},
+			"nighthour" : 
+			{
+				"fraction" : true,
+				"index" : 3,
+				"max" : 24,
+				"min" : 0,
+				"order" : 103,
+				"precision" : 1,
+				"step" : 1,
+				"text" : "Night Hour",
+				"type" : "slider",
+				"value" : 18
+			},
+			"nightminute" : 
+			{
+				"fraction" : true,
+				"index" : 4,
+				"max" : 59,
+				"min" : 0,
+				"order" : 104,
+				"precision" : 1,
+				"step" : 1,
+				"text" : "Night Minute",
+				"type" : "slider",
+				"value" : 0
+			},
+			"positiony" : 
+			{
+				"fraction" : true,
+				"index" : 5,
+				"max" : 100,
+				"min" : 0,
+				"order" : 105,
+				"precision" : 1,
+				"step" : 1,
+				"text" : "Position Y",
+				"type" : "slider",
+				"value" : 50
+			},
+			"schemecolor" : 
+			{
+				"order" : 0,
+				"text" : "ui_browse_properties_scheme_color",
+				"type" : "color",
+				"value" : "0 0 0"
+			},
+			"version" : 
+			{
+				"condition" : "",
+				"index" : 0,
+				"options" : 
+				[
+					{
+						"label" : "10.12 Day Shift",
+						"value" : "10-12"
+					},
+					{
+						"label" : "10.13 Day Shift",
+						"value" : "10-13"
+					},
+					{
+						"label" : "10.14",
+						"value" : "10-14"
+					},
+					{
+						"label" : "10.15",
+						"value" : "10-15"
+					},
+					{
+						"label" : "11.0",
+						"value" : "11-0"
+					},
+					{
+						"label" : "11.0 Color",
+						"value" : "11-0-Color"
+					}
+				],
+				"order" : 100,
+				"text" : "Version",
+				"type" : "combo",
+				"value" : "11-0"
+			}
+		}
+	},
+	"preview" : "preview.jpg",
+	"tags" : [ "Landscape" ],
+	"title" : "MacOS Dynamic Time Shift",
+	"type" : "web",
+	"version" : 2,
+	"workshopid" : "2727531270",
+	"workshopurl" : "steam://url/CommunityFilePage/2727531270"
+}
