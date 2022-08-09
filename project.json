@@ -1,6 +1,6 @@
 {
 	"contentrating" : "Everyone",
-	"description" : "Dynamic changing with time critiria",
+	"description" : "เปลี่ยนภาพหน้าจอตามช่วงเวลาที่กำหนด\n\n[b] คุณสมบัติที่ตั้งค่าได้ [/b]\n[list]\n[*] เวอร์ชันของ macOS\n[*] รอบกลางวัน (ชั่วโมง)\n[*] รอบกลางวัน (นาที)\n[*] รอบกลางคืน (ชั่วโมง)\n[*] รอบกลางคืน (นาที)\n[*] เลื่อนตำแหน่งแกน  Y (ขึ้นลง)\n[/list]\n\n[b] เวอร์ชันภาพหน้าจอของ macOS ที่รองรับ [/b]\n[list]\n[*] 11.0 Color\n[*] 11.0\n[*] 10.15\n[*] 10.14\n[*] 10.13 (Day Shift Only)\n[*] 10.12 (Day Shift Only)\n[/list]\n\n[b] ค่าเริ่มต้นของระบบ [/b]\n[list]\n[*] เวอร์ชันของ macOS: 12.0\n[*] รอบกลางวัน (ชั่วโมง): 6\n[*] รอบกลางวัน (นาที): 0\n[*] รอบกลางคืน (ชั่วโมง): 18\n[*] รอบกลางคืน (นาที): 0\n[*] เลื่อนตำแหน่งแกน  Y (ขึ้นลง): 50\n[/list]",
 	"file" : "index.html",
 	"general" : 
 	{
@@ -85,34 +85,42 @@
 				"options" : 
 				[
 					{
-						"label" : "10.12 Day Shift",
+						"label" : "10.12 Sierra (Day Shift)",
 						"value" : "10-12"
 					},
 					{
-						"label" : "10.13 Day Shift",
+						"label" : "10.13 High Sierra (Day Shift)",
 						"value" : "10-13"
 					},
 					{
-						"label" : "10.14",
+						"label" : "10.14 Mojave",
 						"value" : "10-14"
 					},
 					{
-						"label" : "10.15",
+						"label" : "10.15 Catalina",
 						"value" : "10-15"
 					},
 					{
-						"label" : "11.0",
+						"label" : "11.0 Big Sur",
 						"value" : "11-0"
 					},
 					{
-						"label" : "11.0 Color",
+						"label" : "11.0 Big Sur (Color)",
 						"value" : "11-0-Color"
+					},
+					{
+						"label" : "12.0 Monterey",
+						"value" : "12-0"
+					},
+					{
+						"label" : "13.0 Ventura",
+						"value" : "13-0"
 					}
 				],
 				"order" : 100,
 				"text" : "Version",
 				"type" : "combo",
-				"value" : "11-0"
+				"value" : "12-0"
 			}
 		}
 	},
@@ -121,6 +129,7 @@
 	"title" : "MacOS Dynamic Time Shift",
 	"type" : "web",
 	"version" : 2,
+	"visibility" : "public",
 	"workshopid" : "2727531270",
 	"workshopurl" : "steam://url/CommunityFilePage/2727531270"
 }
