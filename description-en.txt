@@ -1,0 +1,36 @@
+Dynamic background changes with time criteria
+
+[h1] Current Version 1.3.0 [/h1]
+[b] Setting Properties [/b]
+[list]
+[*] macOS version
+[*] Day shift (hour)
+[*] Day shift (minute)
+[*] Night shift (hour)
+[*] Night shift (minute)
+[*] Position Y (up-down)
+[/list]
+
+[b]  Available macOS version [/b]
+[list]
+[*] ✨ 15.2 Sequoia
+[*] 14 Sonoma
+[*] 13.0 Ventura
+[*] 12.0 Monterey
+[*] 11.0 Big Sur (Color)
+[*] 11.0 Big Sur
+[*] 10.15 Catalina
+[*] 10.14 Mojave
+[*] 10.13 High Sierra (Day Shift Only)
+[*] 10.12 Sierra (Day Shift Only)
+[/list]
+
+[b] Default Values [/b]
+[list]
+[*] ✨ macOS version: 15.2
+[*] Day shift (hour): 6
+[*] Day shift (minute): 0
+[*] Night shift (hour): 18
+[*] Night shift (minute): 0
+[*] Position Y (up-down): 50
+[/list]
