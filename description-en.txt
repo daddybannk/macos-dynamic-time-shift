@@ -1,6 +1,5 @@
 Dynamic background changes with time criteria
 
-[h1] Current Version 1.3.0 [/h1]
 [b] Setting Properties [/b]
 [list]
 [*] macOS version
@@ -13,7 +12,8 @@ Dynamic background changes with time criteria
 
 [b]  Available macOS version [/b]
 [list]
-[*] ✨ 15.2 Sequoia
+[*] ✨ 26 Tahoe
+[*] 15.2 Sequoia
 [*] 14 Sonoma
 [*] 13.0 Ventura
 [*] 12.0 Monterey
@@ -27,7 +27,7 @@ Dynamic background changes with time criteria
 
 [b] Default Values [/b]
 [list]
-[*] ✨ macOS version: 15.2
+[*] ✨ macOS version: 26
 [*] Day shift (hour): 6
 [*] Day shift (minute): 0
 [*] Night shift (hour): 18
