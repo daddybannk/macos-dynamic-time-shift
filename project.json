@@ -1,6 +1,6 @@
 {
 	"contentrating" : "Everyone",
-	"description" : "เปลี่ยนภาพหน้าจอตามช่วงเวลาที่กำหนด\r\n\r\n[h1] เวอร์ชันปัจจุบัน 1.4.0 [/h1]\r\n[b] คุณสมบัติที่ตั้งค่าได้ [/b]\r\n[list]\r\n[*] เวอร์ชันของ macOS\r\n[*] รอบกลางวัน (ชั่วโมง)\r\n[*] รอบกลางวัน (นาที)\r\n[*] รอบกลางคืน (ชั่วโมง)\r\n[*] รอบกลางคืน (นาที)\r\n[*] เลื่อนตำแหน่งแกน  Y (ขึ้นลง)\r\n[/list]\r\n\r\n[b] เวอร์ชันภาพหน้าจอของ macOS ที่รองรับ [/b]\r\n[list]\r\n[*] ✨ 26 Tahoe\r\n[*] 15.2 Sequoia\r\n[*] 14 Sonoma\r\n[*] 13.0 Ventura\r\n[*] 12.0 Monterey\r\n[*] 11.0 Big Sur (Color)\r\n[*] 11.0 Big Sur\r\n[*] 10.15 Catalina\r\n[*] 10.14 Mojave\r\n[*] 10.13 High Sierra (Day Shift Only)\r\n[*] 10.12 Sierra (Day Shift Only)\r\n[/list]\r\n\r\n[b] ค่าเริ่มต้นของระบบ [/b]\r\n[list]\r\n[*] ✨ เวอร์ชันของ macOS: 26\r\n[*] รอบกลางวัน (ชั่วโมง): 6\r\n[*] รอบกลางวัน (นาที): 0\r\n[*] รอบกลางคืน (ชั่วโมง): 18\r\n[*] รอบกลางคืน (นาที): 0\r\n[*] เลื่อนตำแหน่งแกน  Y (ขึ้นลง): 50\r\n[/list]",
+	"description" : "Dynamic background changes with time criteria\n\n[b] Setting Properties [/b]\n[list]\n[*] macOS version\n[*] Day shift (hour)\n[*] Day shift (minute)\n[*] Night shift (hour)\n[*] Night shift (minute)\n[*] Position Y (up-down)\n[/list]\n\n[b]  Available macOS version [/b]\n[list]\n[*] ✨ 26 Tahoe\n[*] 15.2 Sequoia\n[*] 14 Sonoma\n[*] 13.0 Ventura\n[*] 12.0 Monterey\n[*] 11.0 Big Sur (Color)\n[*] 11.0 Big Sur\n[*] 10.15 Catalina\n[*] 10.14 Mojave\n[*] 10.13 High Sierra (Day Shift Only)\n[*] 10.12 Sierra (Day Shift Only)\n[/list]\n\n[b] Default Values [/b]\n[list]\n[*] ✨ macOS version: 26\n[*] Day shift (hour): 6\n[*] Day shift (minute): 0\n[*] Night shift (hour): 18\n[*] Night shift (minute): 0\n[*] Position Y (up-down): 50\n[/list]",
 	"file" : "index.html",
 	"general" : 
 	{
@@ -43,7 +43,7 @@
 				"step" : 1,
 				"text" : "Night Hour",
 				"type" : "slider",
-				"value" : 18
+				"value" : 17
 			},
 			"nightminute" : 
 			{
@@ -140,7 +140,7 @@
 	"tags" : [ "Landscape" ],
 	"title" : "MacOS Dynamic Time Shift",
 	"type" : "web",
-	"version" : 7,
+	"version" : 10,
 	"visibility" : "public",
 	"workshopid" : "2727531270",
 	"workshopurl" : "steam://url/CommunityFilePage/2727531270"
