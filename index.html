@@ -1,8 +1,38 @@
 <html>
     <head>
         <title>Dynamic Background</title>
+        <style>
+            html, body {
+                margin: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                background: black;
+            }
+
+            .bg-layer {
+                position: fixed;
+                inset: 0;
+
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+
+                opacity: 0;
+                transition: opacity 1.5s ease;
+
+                will-change: opacity;
+            }
+
+            .bg-visible {
+                opacity: 1;
+            }
+        </style>
     </head>
     <body>
+        <div id="bg1" class="bg-layer bg-visible"></div>
+        <div id="bg2" class="bg-layer"></div>
+
         <noscript>Sorry, your browser does not support JavaScript!</noscript>
         <script>
             const DEFAULT_URL = "26";
@@ -22,6 +52,16 @@
                 nightMinute: DEFAULT_NIGHT_MINUTE,
                 positionY: DEFAULT_POSITION_Y,
             };
+
+            let lastState = {
+                imagePath: "",
+                positionY: "",
+            };
+            let activeLayer = 1;
+            let isTransitioning = false;
+
+            const bg1 = document.getElementById("bg1");
+            const bg2 = document.getElementById("bg2");
 
             document.addEventListener("DOMContentLoaded", function(event) { 
                 changeBackground(myConfig);
@@ -56,8 +96,7 @@
                 }
             }
 
-            function changeBackground({version, dayHour, dayMinute, nightHour, nightMinute, positionY}) {
-                
+            function buildImagePath({version, dayHour, dayMinute, nightHour, nightMinute}) {
                 let dayTime = DEFAULT_DAY_TIME;
                 const settingDayHour = isHour(dayHour) ? dayHour : DEFAULT_DAY_HOUR;
                 const settingDayMinute = isMinute(dayMinute) ? dayMinute : DEFAULT_DAY_MINUTE;
@@ -78,15 +117,41 @@
                     dayTime = DEFAULT_NIGHT_TIME;
                 }
                 if (DAY_SHIFT_ONLY_VERSION.indexOf(version) >= 0) {
-                    document.body.style.background = `url('img/${version}/${version}.jpg')`;
-                } else {
-                    document.body.style.background = `url('img/${version}/${version}-${dayTime}.jpg')`;
+                    return `img/${version}/${version}.jpg`;
                 }
-                document.body.style.transition = "background 2s ease";
-                document.body.style.backgroundPosition = "center";
-                document.body.style.backgroundRepeat = "no-repeat";
-                document.body.style.backgroundSize = "cover";
-                document.body.style.backgroundPositionY = positionY;
+                return `img/${version}/${version}-${dayTime}.jpg`;
+            }
+
+            function preloadImage(src) {
+                return new Promise((resolve) => {
+                    const img = new Image();
+                    img.onload = resolve;
+                    img.onerror = resolve;
+                    img.src = src;
+                });
+            }
+
+            async function changeBackground(config) {
+                const imagePath = buildImagePath(config);
+                const currentLayer = activeLayer == 1 ? bg1 : bg2;
+                if (lastState.imagePath == imagePath && lastState.positionY != config.positionY) {
+                    currentLayer.style.backgroundPositionY = config.positionY;
+                    lastState.positionY = config.positionY;
+                    return;
+                }
+                if (lastState.imagePath == imagePath && lastState.positionY == config.positionY) {
+                    return;
+                }
+                lastState.imagePath = imagePath;
+                lastState.positionY = config.positionY
+                await preloadImage(imagePath);
+                const nextLayer = activeLayer == 1 ? bg2 : bg1;
+                nextLayer.style.backgroundImage = `url('${imagePath}')`;
+                nextLayer.style.backgroundPositionY = config.positionY;
+                nextLayer.offsetHeight;
+                nextLayer.classList.add("bg-visible");
+                currentLayer.classList.remove("bg-visible");
+                activeLayer = activeLayer == 1 ? 2 : 1;
             }
 
             window.wallpaperPropertyListener = {
@@ -109,6 +174,7 @@
                     if (properties.positiony) {
                         myConfig.positionY = properties.positiony.value + "%";
                     }
+                    changeBackground(myConfig);
                 },
             };
         </script>
