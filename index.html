@@ -40,10 +40,21 @@
             const DEFAULT_DAY_MINUTE = 0;
             const DEFAULT_NIGHT_HOUR = 18;
             const DEFAULT_NIGHT_MINUTE = 0;
+            const DEFAULT_DAWN_TIME = "Dawn";
             const DEFAULT_DAY_TIME = "Day";
+            const DEFAULT_DUSK_TIME = "Dusk";
             const DEFAULT_NIGHT_TIME = "Night";
             const DEFAULT_POSITION_Y = "50%";
             const DAY_SHIFT_ONLY_VERSION = ["10-12","10-13"];
+            const FOUR_PERIOD_VERSION = ["26-Beach"];
+            const DEFAULT_DAWN_HOUR = 6;
+            const DEFAULT_DAWN_MINUTE = 0;
+            const DEFAULT_DAY_HOUR_4 = 10;
+            const DEFAULT_DAY_MINUTE_4 = 0;
+            const DEFAULT_DUSK_HOUR = 17;
+            const DEFAULT_DUSK_MINUTE = 0;
+            const DEFAULT_NIGHT_HOUR_4 = 21;
+            const DEFAULT_NIGHT_MINUTE_4 = 0;
             var myConfig = {
                 version: DEFAULT_URL,
                 dayHour: DEFAULT_DAY_HOUR,
@@ -51,6 +62,14 @@
                 nightHour: DEFAULT_NIGHT_HOUR,
                 nightMinute: DEFAULT_NIGHT_MINUTE,
                 positionY: DEFAULT_POSITION_Y,
+                dawnHour: DEFAULT_DAWN_HOUR,
+                dawnMinute: DEFAULT_DAWN_MINUTE,
+                dayHour4: DEFAULT_DAY_HOUR_4,
+                dayMinute4: DEFAULT_DAY_MINUTE_4,
+                duskHour: DEFAULT_DUSK_HOUR,
+                duskMinute: DEFAULT_DUSK_MINUTE,
+                nightHour4: DEFAULT_NIGHT_HOUR_4,
+                nightMinute4: DEFAULT_NIGHT_MINUTE_4,
             };
 
             let lastState = {
@@ -96,7 +115,23 @@
                 }
             }
 
-            function buildImagePath({version, dayHour, dayMinute, nightHour, nightMinute}) {
+            function getFourPeriod(currentMin, dawnMin, dayMin, duskMin, nightMin) {
+                if (currentMin >= nightMin || currentMin < dawnMin) {
+                    return DEFAULT_NIGHT_TIME;
+                }
+                if (currentMin >= duskMin) {
+                    return DEFAULT_DUSK_TIME;
+                }
+                if (currentMin >= dayMin) {
+                    return DEFAULT_DAY_TIME;
+                }
+                return DEFAULT_DAWN_TIME;
+            }
+
+            function buildImagePath(config) {
+                const {version, dayHour, dayMinute, nightHour, nightMinute,
+                    dawnHour, dawnMinute, dayHour4, dayMinute4,
+                    duskHour, duskMinute, nightHour4, nightMinute4} = config;
                 let dayTime = DEFAULT_DAY_TIME;
                 const settingDayHour = isHour(dayHour) ? dayHour : DEFAULT_DAY_HOUR;
                 const settingDayMinute = isMinute(dayMinute) ? dayMinute : DEFAULT_DAY_MINUTE;
@@ -104,8 +139,30 @@
                 const settingNightMinute = isMinute(nightMinute) ? nightMinute : DEFAULT_NIGHT_MINUTE;
                 const h = getHour();
                 const m = getMinute();
-                if (version == "") {
-                    version = DEFAULT_URL;
+                let resolvedVersion = version;
+                if (resolvedVersion == "") {
+                    resolvedVersion = DEFAULT_URL;
+                }
+                if (DAY_SHIFT_ONLY_VERSION.indexOf(resolvedVersion) >= 0) {
+                    return `img/${resolvedVersion}/${resolvedVersion}.jpg`;
+                }
+                if (FOUR_PERIOD_VERSION.indexOf(resolvedVersion) >= 0) {
+                    const sDawnH = isHour(dawnHour) ? dawnHour : DEFAULT_DAWN_HOUR;
+                    const sDawnM = isMinute(dawnMinute) ? dawnMinute : DEFAULT_DAWN_MINUTE;
+                    const sDayH = isHour(dayHour4) ? dayHour4 : DEFAULT_DAY_HOUR_4;
+                    const sDayM = isMinute(dayMinute4) ? dayMinute4 : DEFAULT_DAY_MINUTE_4;
+                    const sDuskH = isHour(duskHour) ? duskHour : DEFAULT_DUSK_HOUR;
+                    const sDuskM = isMinute(duskMinute) ? duskMinute : DEFAULT_DUSK_MINUTE;
+                    const sNightH = isHour(nightHour4) ? nightHour4 : DEFAULT_NIGHT_HOUR_4;
+                    const sNightM = isMinute(nightMinute4) ? nightMinute4 : DEFAULT_NIGHT_MINUTE_4;
+                    dayTime = getFourPeriod(
+                        h * 60 + m,
+                        sDawnH * 60 + sDawnM,
+                        sDayH * 60 + sDayM,
+                        sDuskH * 60 + sDuskM,
+                        sNightH * 60 + sNightM
+                    );
+                    return `img/${resolvedVersion}/${resolvedVersion}-${dayTime}.jpg`;
                 }
                 if (settingDayHour < h && h < settingNightHour) {
                     dayTime = DEFAULT_DAY_TIME;
@@ -116,10 +173,7 @@
                 } else {
                     dayTime = DEFAULT_NIGHT_TIME;
                 }
-                if (DAY_SHIFT_ONLY_VERSION.indexOf(version) >= 0) {
-                    return `img/${version}/${version}.jpg`;
-                }
-                return `img/${version}/${version}-${dayTime}.jpg`;
+                return `img/${resolvedVersion}/${resolvedVersion}-${dayTime}.jpg`;
             }
 
             function preloadImage(src) {
@@ -173,6 +227,30 @@
                     }
                     if (properties.positiony) {
                         myConfig.positionY = properties.positiony.value + "%";
+                    }
+                    if (properties.dawnhour) {
+                        myConfig.dawnHour = properties.dawnhour.value;
+                    }
+                    if (properties.dawnminute) {
+                        myConfig.dawnMinute = properties.dawnminute.value;
+                    }
+                    if (properties.dayhour4) {
+                        myConfig.dayHour4 = properties.dayhour4.value;
+                    }
+                    if (properties.dayminute4) {
+                        myConfig.dayMinute4 = properties.dayminute4.value;
+                    }
+                    if (properties.duskhour) {
+                        myConfig.duskHour = properties.duskhour.value;
+                    }
+                    if (properties.duskminute) {
+                        myConfig.duskMinute = properties.duskminute.value;
+                    }
+                    if (properties.nighthour4) {
+                        myConfig.nightHour4 = properties.nighthour4.value;
+                    }
+                    if (properties.nightminute4) {
+                        myConfig.nightMinute4 = properties.nightminute4.value;
                     }
                     changeBackground(myConfig);
                 },
