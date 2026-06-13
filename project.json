@@ -1,6 +1,6 @@
 {
 	"contentrating" : "Everyone",
-	"description" : "Dynamic background changes with time criteria\n\n[b] Setting Properties [/b]\n[list]\n[*] macOS version\n[*] Day shift (hour)\n[*] Day shift (minute)\n[*] Night shift (hour)\n[*] Night shift (minute)\n[*] Position Y (up-down)\n[/list]\n\n[b]  Available macOS version [/b]\n[list]\n[*] ✨ 26 Tahoe\n[*] 15.2 Sequoia\n[*] 14 Sonoma\n[*] 13.0 Ventura\n[*] 12.0 Monterey\n[*] 11.0 Big Sur (Color)\n[*] 11.0 Big Sur\n[*] 10.15 Catalina\n[*] 10.14 Mojave\n[*] 10.13 High Sierra (Day Shift Only)\n[*] 10.12 Sierra (Day Shift Only)\n[/list]\n\n[b] Default Values [/b]\n[list]\n[*] ✨ macOS version: 26\n[*] Day shift (hour): 6\n[*] Day shift (minute): 0\n[*] Night shift (hour): 18\n[*] Night shift (minute): 0\n[*] Position Y (up-down): 50\n[/list]",
+	"description" : "Dynamic background changes with time criteria\n\n[b] Setting Properties [/b]\n[list]\n[*] macOS version\n[*] Day shift (hour, minute)\n[*] Night shift (hour, minute)\n[*] Position Y (up-down)\n[*] 4-Period Dawn shift (hour, minute)\n[*] 4-Period Day shift (hour, minute)\n[*] 4-Period Dusk shift (hour, minute)\n[*] 4-Period Night shift (hour, minute)\n[/list]\n\n[b] Available macOS version [/b]\n[list]\n[*] ✨ 27 Golden Gate\n[*] 26 Tahoe Beach (4-Period)\n[*] 26 Tahoe\n[*] 15.2 Sequoia\n[*] 14 Sonoma\n[*] 13.0 Ventura\n[*] 12.0 Monterey\n[*] 11.0 Big Sur (Color)\n[*] 11.0 Big Sur\n[*] 10.15 Catalina\n[*] 10.14 Mojave\n[*] 10.13 High Sierra (Day Shift Only)\n[*] 10.12 Sierra (Day Shift Only)\n[/list]\n\n[b] Default Values [/b]\n[list]\n[*] ✨ macOS version: 27\n[*] Day shift (hour): 6\n[*] Day shift (minute): 0\n[*] Night shift (hour): 18\n[*] Night shift (minute): 0\n[*] 4-Period Dawn shift (hour): 6\n[*] 4-Period Dawn shift (minute): 0\n[*] 4-Period Day shift (hour): 7\n[*] 4-Period Day shift (minute): 0\n[*] 4-Period Dusk shift (hour): 17\n[*] 4-Period Dusk shift (minute): 0\n[*] 4-Period Night shift (hour): 18\n[*] 4-Period Night shift (minute): 0\n[*] Position Y (up-down): 50\n[/list]",
 	"file" : "index.html",
 	"general" : 
 	{
@@ -54,7 +54,7 @@
 				"order" : 107,
 				"text" : "Day Hour",
 				"type" : "slider",
-				"value" : 10
+				"value" : 7
 			},
 			"dayminute" : 
 			{
@@ -130,7 +130,7 @@
 				"order" : 111,
 				"text" : "Night Hour",
 				"type" : "slider",
-				"value" : 21
+				"value" : 18
 			},
 			"nightminute" : 
 			{
@@ -170,7 +170,7 @@
 				"step" : 1,
 				"text" : "Position Y",
 				"type" : "slider",
-				"value" : 0
+				"value" : 50
 			},
 			"schemecolor" : 
 			{
@@ -228,12 +228,16 @@
 					{
 						"label" : "26 Tahoe Beach",
 						"value" : "26-Beach"
+					},
+					{
+						"label" : "27 Golden Gate",
+						"value" : "27"
 					}
 				],
 				"order" : 100,
 				"text" : "Version",
 				"type" : "combo",
-				"value" : "26"
+				"value" : "27"
 			}
 		}
 	},
@@ -245,7 +249,7 @@
 	"tags" : [ "Landscape" ],
 	"title" : "MacOS Dynamic Time Shift",
 	"type" : "web",
-	"version" : 12,
+	"version" : 15,
 	"visibility" : "public",
 	"workshopid" : "2727531270",
 	"workshopurl" : "steam://url/CommunityFilePage/2727531270"

@@ -17,6 +17,7 @@ Dynamic background changes with time criteria
 
 ## Available macOS Versions
 
+- 27 Golden Gate
 - 26 Tahoe Beach (4-Period)
 - 26 Tahoe
 - 15.2 Sequoia
@@ -32,7 +33,7 @@ Dynamic background changes with time criteria
 
 ## Default Values
 
-- macOS version: 26
+- macOS version: 27
 - Day shift (hour): 6
 - Day shift (minute): 0
 - Night shift (hour): 18

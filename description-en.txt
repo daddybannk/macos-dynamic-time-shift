@@ -6,16 +6,17 @@ Dynamic background changes with time criteria
 [*] Day shift (hour, minute)
 [*] Night shift (hour, minute)
 [*] Position Y (up-down)
-[*] ✨ 4-Period Dawn shift (hour, minute)
-[*] ✨ 4-Period Day shift (hour, minute)
-[*] ✨ 4-Period Dusk shift (hour, minute)
-[*] ✨ 4-Period Night shift (hour, minute)
+[*] 4-Period Dawn shift (hour, minute)
+[*] 4-Period Day shift (hour, minute)
+[*] 4-Period Dusk shift (hour, minute)
+[*] 4-Period Night shift (hour, minute)
 [/list]
 
-[b]  Available macOS version [/b]
+[b] Available macOS version [/b]
 [list]
-[*] ✨ 26 Tahoe Beach (4-Period)
-[*] ✨ 26 Tahoe
+[*] ✨ 27 Golden Gate
+[*] 26 Tahoe Beach (4-Period)
+[*] 26 Tahoe
 [*] 15.2 Sequoia
 [*] 14 Sonoma
 [*] 13.0 Ventura
@@ -30,7 +31,7 @@ Dynamic background changes with time criteria
 
 [b] Default Values [/b]
 [list]
-[*] ✨ macOS version: 26
+[*] ✨ macOS version: 27
 [*] Day shift (hour): 6
 [*] Day shift (minute): 0
 [*] Night shift (hour): 18
